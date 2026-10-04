@@ -42,6 +42,13 @@ export const statusLabels: Record<Status, string> = {
   archived: "ARCHIVED",
 };
 
+export const statusDescriptions: Record<Status, string> = {
+  live: "배포되어 누구나 열어볼 수 있어요",
+  building: "만드는 중이에요",
+  local: "내 PC에서만 실행하는 도구예요",
+  archived: "작업을 마치고 보관 중이에요",
+};
+
 export const projects: Project[] = [
   {
     slug: "watchtower",

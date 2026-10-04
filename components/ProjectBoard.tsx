@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import { categoryLabels, statusLabels, type Category, type Project } from "@/content/projects";
+import { categoryLabels, type Category, type Project } from "@/content/projects";
 
 type Filter = "all" | Category;
 
@@ -28,11 +29,12 @@ export default function ProjectBoard({ projects }: { projects: Project[] }) {
         {projects.map((p) => (
           <li key={p.slug} className="card" data-cat={p.category} hidden={!shown.includes(p)}>
             <div className="meta">
-              <span className={`status status-${p.status}`}>{statusLabels[p.status]}</span>
-              <span>{categoryLabels[p.category]}</span>
+              <span className="cat">{categoryLabels[p.category]}</span>
               <span className="period">{p.period}</span>
             </div>
-            <h3>{p.name}</h3>
+            <h3>
+              <Link href={`/projects/${p.slug}/`}>{p.name}</Link>
+            </h3>
             <p className="summary">{p.summary}</p>
             {p.highlights.length > 0 && (
               <ul className="highlights">
@@ -47,13 +49,12 @@ export default function ProjectBoard({ projects }: { projects: Project[] }) {
               ))}
             </ul>
             <div className="actions">
+              <Link href={`/projects/${p.slug}/`}>자세히</Link>
               {p.url ? (
                 <a className="open" href={p.url} target="_blank" rel="noreferrer">
                   열어보기 ↗
                 </a>
-              ) : (
-                <span className="muted">{p.status === "local" ? "PC에서 실행하는 도구" : "배포 주소 준비 중"}</span>
-              )}
+              ) : null}
               {p.repos
                 .filter((r) => r.public)
                 .map((r) => (
@@ -61,7 +62,6 @@ export default function ProjectBoard({ projects }: { projects: Project[] }) {
                     GitHub ↗
                   </a>
                 ))}
-              {p.repos.every((r) => !r.public) && <span className="muted">비공개 저장소</span>}
             </div>
           </li>
         ))}
