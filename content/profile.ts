@@ -4,7 +4,7 @@ export const profile = {
   name: "jini",
   role: "플랫폼 서비스 QA",
   /** 상단 로고 모양: "check"(체크박스) · "block"(검은 사각형 j) · "stack"(JI/NI 사각형) */
-  logo: "check" as "check" | "block" | "stack",
+  logo: "stack" as "check" | "block" | "stack",
   intro:
     "테일즈런너를 비롯한 게임·웹 플랫폼 서비스를 검수합니다. 반복되는 검수는 AI와 자동화 도구로 줄이고, 필요한 서비스는 직접 만들어 배포합니다.",
   links: [{ label: "GitHub", href: "https://github.com/yourjini" }],
