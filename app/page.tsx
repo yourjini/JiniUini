@@ -7,14 +7,8 @@ export default function Home() {
 
   return (
     <main className="page">
-      <section className="intro">
-        <h1>{profile.name}</h1>
-        <p className="role">{profile.role}</p>
-        <p className="lede">{profile.tagline}</p>
-      </section>
-
       <section id="work" className="section">
-        <h2 className="section-title">프로젝트</h2>
+        <h1 className="section-title">프로젝트</h1>
         <ProjectBoard projects={list} />
       </section>
 

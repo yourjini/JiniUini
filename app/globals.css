@@ -49,7 +49,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--fg); outline-of
   align-items: center;
   gap: 16px;
 }
-.wordmark { font-weight: 600; text-decoration: none; }
+.wordmark { text-decoration: none; }
+.logo { display: inline-flex; align-items: center; gap: 8px; }
+.logo svg { display: block; }
+.logo-word { font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+.logo-block { font-family: var(--font); font-weight: 600; font-size: 18px; fill: var(--bg); }
+.logo-stack { font-family: var(--font); font-weight: 600; font-size: 12px; fill: currentColor; letter-spacing: 0.04em; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .topnav { display: flex; gap: 20px; font-size: 14px; }
 .topnav a { color: var(--muted); text-decoration: none; }
 .topnav a:hover { color: var(--fg); }
