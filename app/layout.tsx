@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import { profile } from "@/content/profile";
 import "./globals.css";
 
@@ -21,12 +22,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <header className="topbar">
-          <Link href="/" className="wordmark">
-            {profile.name}
+          <Link href="/" className="wordmark" aria-label={`${profile.name} 홈`}>
+            <Logo />
           </Link>
           <nav className="topnav">
             <a href="/#work">프로젝트</a>
-            <a href="/#about">소개</a>
+            <Link href="/about/">소개</Link>
             {profile.links.map((l) => (
               <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
                 {l.label} ↗
