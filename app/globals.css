@@ -1,4 +1,4 @@
-/* Layout: 한 단짜리 좁은 본문. 이름과 한 줄 소개 → 분류 탭 → 프로젝트 목록(이름 · 한 줄 설명 · 분류) → 소개.
+/* Layout: 한 단짜리 좁은 본문. 첫 화면은 분류 탭 → 프로젝트 목록(이름 · 한 줄 설명 · 분류), 소개·이력은 /about/.
    장식과 애니메이션 없이 글자와 줄 간격만으로 구분합니다. */
 :root {
   --bg: #ffffff;
@@ -69,9 +69,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--fg); outline-of
   display: grid;
   gap: 72px;
 }
-.intro { display: grid; gap: 4px; }
-.intro h1 { margin: 0; font-size: 32px; font-weight: 600; line-height: 1.3; }
-.role { margin: 0; color: var(--muted); }
 .lede { margin: 12px 0 0; font-size: 18px; max-width: 40ch; }
 
 .section { display: grid; gap: 20px; }

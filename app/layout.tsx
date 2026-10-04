@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Link>
           <nav className="topnav">
             <a href="/#work">프로젝트</a>
-            <a href="/#about">소개</a>
+            <Link href="/about/">소개</Link>
             {profile.links.map((l) => (
               <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
                 {l.label} ↗
