@@ -27,13 +27,13 @@ export default async function ProjectPage({ params }: Params) {
   const next = list[(index + 1) % list.length];
 
   return (
-    <main className={`page detail cat-${p.category}`}>
+    <main className="page detail">
       <Link href="/#work" className="back">
-        ← All work
+        ← 프로젝트 목록
       </Link>
 
       <header className="detail-head">
-        <span className="chip">{categoryLabels[p.category]}</span>
+        <p className="muted">{categoryLabels[p.category]}</p>
         <h1 className="detail-title">{p.name}</h1>
         <p className="lede">{p.summary}</p>
         {p.url && (
@@ -47,13 +47,13 @@ export default async function ProjectPage({ params }: Params) {
         <div>
           <dt>환경</dt>
           <dd>
-            <span className={`status status-${p.status}`}>{statusLabels[p.status]}</span>
+            <span>{statusLabels[p.status]}</span>
             <span className="muted">{statusDescriptions[p.status]}</span>
           </dd>
         </div>
         <div>
           <dt>시기</dt>
-          <dd className="mono">{p.period}</dd>
+          <dd>{p.period}</dd>
         </div>
         <div>
           <dt>배포 주소</dt>
@@ -86,18 +86,14 @@ export default async function ProjectPage({ params }: Params) {
         <div>
           <dt>기술</dt>
           <dd>
-            <ul className="tags">
-              {p.stack.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ul>
+            {p.stack.join(", ")}
           </dd>
         </div>
       </dl>
 
       {p.highlights.length > 0 && (
         <section className="did">
-          <h2 className="section-title">What I did</h2>
+          <h2 className="section-title">한 일</h2>
           <ul>
             {p.highlights.map((h) => (
               <li key={h}>{h}</li>
@@ -108,7 +104,7 @@ export default async function ProjectPage({ params }: Params) {
 
       {next && next.slug !== p.slug && (
         <Link href={`/projects/${next.slug}/`} className="next">
-          <span className="muted">Next</span>
+          <span className="muted">다음 프로젝트</span>
           <span className="next-name">{next.name} →</span>
         </Link>
       )}

@@ -21,32 +21,13 @@ export default function ProjectBoard({ projects }: { projects: Project[] }) {
         ))}
       </div>
 
-      <ul className="bento">
+      <ul className="list">
         {projects.map((p) => (
-          <li
-            key={p.slug}
-            className={`tile cat-${p.category}${p.featured ? " tile-lg" : ""}`}
-            data-cat={p.category}
-            hidden={!shown.includes(p)}
-          >
-            <Link href={`/projects/${p.slug}/`} className="tile-link">
-              <div className="tile-top">
-                <span className="chip">{categoryLabels[p.category]}</span>
-                <span className="arrow" aria-hidden="true">
-                  ↗
-                </span>
-              </div>
-              <div className="tile-body">
-                <h3>{p.name}</h3>
-                <p>{p.summary}</p>
-                {p.featured && (
-                  <ul className="tags" aria-label="사용 기술">
-                    {p.stack.slice(0, 4).map((s) => (
-                      <li key={s}>{s}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+          <li key={p.slug} data-cat={p.category} hidden={!shown.includes(p)}>
+            <Link href={`/projects/${p.slug}/`} className="row">
+              <span className="row-name">{p.name}</span>
+              <span className="row-summary">{p.summary}</span>
+              <span className="row-meta">{categoryLabels[p.category]}</span>
             </Link>
           </li>
         ))}
