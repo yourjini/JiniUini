@@ -4,67 +4,45 @@ import ProjectBoard from "@/components/ProjectBoard";
 
 export default function Home() {
   const list = visibleProjects();
-  const live = list.filter((p) => p.status === "live" && p.url).length;
 
   return (
     <main className="page">
-      <header className="intro">
-        <p className="eyebrow">{profile.role}</p>
-        <h1 className="name">{profile.name}</h1>
-        <p className="lede">{profile.intro}</p>
-        <dl className="tally">
-          <div>
-            <dt>프로젝트</dt>
-            <dd>{list.length}</dd>
-          </div>
-          <div>
-            <dt>배포 중</dt>
-            <dd>{live}</dd>
-          </div>
-          <div>
-            <dt>마지막 업데이트</dt>
-            <dd className="small">{profile.updatedAt}</dd>
-          </div>
-        </dl>
-        <nav className="links">
-          {profile.links.map((l) => (
-            <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
-              {l.label} ↗
-            </a>
-          ))}
-        </nav>
-      </header>
+      <section className="intro">
+        <h1>{profile.name}</h1>
+        <p className="role">{profile.role}</p>
+        <p className="lede">{profile.tagline}</p>
+      </section>
 
-      <section aria-labelledby="projects-title" className="section">
-        <h2 id="projects-title" className="section-title">
-          프로젝트
-        </h2>
+      <section id="work" className="section">
+        <h2 className="section-title">프로젝트</h2>
         <ProjectBoard projects={list} />
       </section>
 
-      <section aria-labelledby="exp-title" className="section">
-        <h2 id="exp-title" className="section-title">
-          이력
-        </h2>
+      <section id="about" className="section">
+        <h2 className="section-title">소개</h2>
+        <p className="about">{profile.intro}</p>
         <ol className="exp">
           {experience.map((e) => (
             <li key={e.title}>
-              <span className="exp-period">{e.period}</span>
+              <span className="muted">{e.period}</span>
               <div>
                 <h3>{e.title}</h3>
-                <p>{e.detail}</p>
+                <p className="muted">{e.detail}</p>
               </div>
             </li>
           ))}
         </ol>
-        <ul className="skills" aria-label="기술">
-          {skills.map((s) => (
-            <li key={s}>{s}</li>
-          ))}
-        </ul>
+        <p className="muted small">{skills.join(" · ")}</p>
       </section>
 
-      <footer className="foot">© {profile.name} · 직접 만들고 검수한 프로젝트들</footer>
+      <footer className="foot muted small">
+        {profile.links.map((l) => (
+          <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+            {l.label} ↗
+          </a>
+        ))}
+        <span>업데이트 {profile.updatedAt}</span>
+      </footer>
     </main>
   );
 }

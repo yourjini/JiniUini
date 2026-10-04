@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { profile } from "@/content/profile";
 import "./globals.css";
 
@@ -15,10 +16,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <header className="topbar">
+          <Link href="/" className="wordmark">
+            {profile.name}
+          </Link>
+          <nav className="topnav">
+            <a href="/#work">프로젝트</a>
+            <a href="/#about">소개</a>
+            {profile.links.map((l) => (
+              <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+                {l.label} ↗
+              </a>
+            ))}
+          </nav>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
