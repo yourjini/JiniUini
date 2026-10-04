@@ -195,20 +195,17 @@ export const projects: Project[] = [
   {
     slug: "genie",
     name: "Genie AI 헬프데스크",
-    summary: "회사 기획 문서를 학습해 개발·기획·QA 직군의 질문에 답하는 사내 AI 헬프데스크.",
+    summary: "회사 기획 문서를 올리면 AI가 학습해서 질문에 답하고, QA용 테스트케이스·체크리스트까지 만들어 주는 사내 헬프데스크.",
     category: "service",
     status: "building",
-    repos: [
-      { name: "SUPA-GENIE", public: false },
-      { name: "DocsGenie", public: false },
-    ],
-    stack: ["Next.js", "Supabase", "Claude API", "RAGFlow"],
+    repos: [{ name: "SUPA-GENIE", public: false }],
+    stack: ["Next.js", "TypeScript", "Supabase", "Claude API"],
     period: "2026-02",
     highlights: [
-      "RAGFlow 기반 문서 지식베이스 구축과 자연어 질의응답 검증",
-      "PDF·Word·Excel 문서 업로드와 Supabase 저장 구조 설계",
+      "PDF·Word·Excel 문서 업로드와 문서 기반 질의응답(RAG) 설계",
+      "문서에서 테스트케이스·체크리스트를 생성하고 엑셀로 내보내는 QA 전용 기능",
     ],
-    visible: false,
+    visible: true,
   },
   {
     slug: "naemoeum",
