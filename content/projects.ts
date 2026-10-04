@@ -215,8 +215,8 @@ export const projects: Project[] = [
     name: "내모음",
     summary: "지도 저장 장소, 즐겨찾기, 유튜브 재생목록, 스크린샷 글을 한곳에 모아 출처·주제별로 정리하는 웹페이지.",
     category: "service",
-    status: "building",
-    url: "", // Vercel 주소가 있으면 여기에 넣으세요
+    status: "live",
+    url: "https://naemoeum.vercel.app/",
     repos: [{ name: "naemoeum", public: false }],
     stack: ["HTML", "JavaScript", "tesseract.js"],
     period: "2026-10",
