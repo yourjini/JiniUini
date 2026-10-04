@@ -95,7 +95,7 @@ export const projects: Project[] = [
       "게임 2종의 라이선스·배포·백엔드 검토 자료 작성",
       "출시 체크리스트와 보고서를 스크립트로 재생성",
     ],
-    visible: true,
+    visible: false,
   },
   {
     slug: "froggy-road",
