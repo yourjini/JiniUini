@@ -3,6 +3,10 @@
 export const profile = {
   name: "jini",
   role: "플랫폼 서비스 QA",
+  /** 첫 화면의 큰 문구. 한 줄씩 나뉘어 보입니다. */
+  headline: ["Tested.", "Built.", "Shipped."],
+  /** 큰 문구 아래 한 줄 소개 */
+  tagline: "QA가 AI와 함께 직접 만들고, 검수하고, 배포한 서비스와 게임들.",
   intro:
     "테일즈런너를 비롯한 게임·웹 플랫폼 서비스를 검수합니다. 반복되는 검수는 AI와 자동화 도구로 줄이고, 필요한 서비스는 직접 만들어 배포합니다.",
   links: [{ label: "GitHub", href: "https://github.com/yourjini" }],

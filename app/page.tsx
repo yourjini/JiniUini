@@ -4,67 +4,82 @@ import ProjectBoard from "@/components/ProjectBoard";
 
 export default function Home() {
   const list = visibleProjects();
-  const live = list.filter((p) => p.status === "live" && p.url).length;
+  const live = list.filter((p) => p.url).length;
+  const stack = Array.from(new Set(list.flatMap((p) => p.stack)));
 
   return (
     <main className="page">
-      <header className="intro">
-        <p className="eyebrow">{profile.role}</p>
-        <h1 className="name">{profile.name}</h1>
-        <p className="lede">{profile.intro}</p>
-        <dl className="tally">
-          <div>
-            <dt>프로젝트</dt>
-            <dd>{list.length}</dd>
-          </div>
-          <div>
-            <dt>배포 중</dt>
-            <dd>{live}</dd>
-          </div>
-          <div>
-            <dt>마지막 업데이트</dt>
-            <dd className="small">{profile.updatedAt}</dd>
-          </div>
-        </dl>
-        <nav className="links">
+      <section className="hero">
+        <p className="kicker">
+          {profile.name} — {profile.role}
+        </p>
+        <h1 className="headline">
+          {profile.headline.map((line, i) => (
+            <span key={line} style={{ "--i": i } as React.CSSProperties}>
+              {line}
+            </span>
+          ))}
+        </h1>
+        <div className="hero-foot">
+          <p className="lede">{profile.tagline}</p>
+          <dl className="tally">
+            <div>
+              <dd>{list.length}</dd>
+              <dt>projects</dt>
+            </div>
+            <div>
+              <dd>{live}</dd>
+              <dt>live</dt>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <div className="marquee" aria-hidden="true">
+        <div className="marquee-track">
+          {[...stack, ...stack].map((s, i) => (
+            <span key={i}>{s}</span>
+          ))}
+        </div>
+      </div>
+
+      <section id="work" className="section">
+        <div className="section-head">
+          <h2 className="section-title">Work</h2>
+        </div>
+        <ProjectBoard projects={list} />
+      </section>
+
+      <section id="about" className="section about">
+        <div className="section-head">
+          <h2 className="section-title">About</h2>
+        </div>
+        <div className="about-grid">
+          <p className="about-intro">{profile.intro}</p>
+          <ol className="exp">
+            {experience.map((e) => (
+              <li key={e.title}>
+                <span className="exp-period">{e.period}</span>
+                <h3>{e.title}</h3>
+                <p>{e.detail}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <p className="skills">{skills.join("  ·  ")}</p>
+      </section>
+
+      <footer className="foot">
+        <p className="foot-big">Let&apos;s build something.</p>
+        <div className="foot-row">
           {profile.links.map((l) => (
             <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
               {l.label} ↗
             </a>
           ))}
-        </nav>
-      </header>
-
-      <section aria-labelledby="projects-title" className="section">
-        <h2 id="projects-title" className="section-title">
-          프로젝트
-        </h2>
-        <ProjectBoard projects={list} />
-      </section>
-
-      <section aria-labelledby="exp-title" className="section">
-        <h2 id="exp-title" className="section-title">
-          이력
-        </h2>
-        <ol className="exp">
-          {experience.map((e) => (
-            <li key={e.title}>
-              <span className="exp-period">{e.period}</span>
-              <div>
-                <h3>{e.title}</h3>
-                <p>{e.detail}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-        <ul className="skills" aria-label="기술">
-          {skills.map((s) => (
-            <li key={s}>{s}</li>
-          ))}
-        </ul>
-      </section>
-
-      <footer className="foot">© {profile.name} · 직접 만들고 검수한 프로젝트들</footer>
+          <span>업데이트 {profile.updatedAt}</span>
+        </div>
+      </footer>
     </main>
   );
 }
