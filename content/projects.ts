@@ -4,7 +4,7 @@
 // 숨기기: visible 을 false 로 바꾸면 사이트에 나오지 않습니다 (목록에는 남아 있음).
 // 순서: featured 가 true 인 항목이 먼저, 그다음 period 가 최근인 순서로 자동 정렬됩니다.
 
-export type Category = "game" | "service" | "qa" | "docs";
+export type Category = "game" | "docs" | "service";
 export type Status = "live" | "building" | "local" | "archived";
 
 export type Project = {
@@ -31,9 +31,8 @@ export type Project = {
 
 export const categoryLabels: Record<Category, string> = {
   game: "게임",
-  service: "웹 서비스",
-  qa: "QA 도구",
-  docs: "문서·기획",
+  docs: "문서/기획",
+  service: "웹서비스",
 };
 
 export const statusLabels: Record<Status, string> = {
@@ -48,7 +47,7 @@ export const projects: Project[] = [
     slug: "watchtower",
     name: "Watchtower",
     summary: "테일즈런너 웹서비스 품질 관리 대시보드. UI 자동화 테스트, API 헬스체크, 릴리즈 이력, 장애 보고서를 한 화면에서 봅니다.",
-    category: "qa",
+    category: "service",
     status: "live",
     url: "https://watchtower-mu-two.vercel.app/",
     repos: [
@@ -69,7 +68,7 @@ export const projects: Project[] = [
     slug: "diffy",
     name: "Diffy · 이벤트 검수",
     summary: "정기점검 전후 이벤트 페이지를 Stage와 Live에서 자동으로 열어 비교하고, 기본 검수 기준을 판정하는 도구.",
-    category: "qa",
+    category: "service",
     status: "local",
     repos: [{ name: "tr-event-qa", public: false }],
     stack: ["Node.js", "Playwright", "pixel diff"],
