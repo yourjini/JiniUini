@@ -208,7 +208,7 @@ export const projects: Project[] = [
       "RAGFlow 기반 문서 지식베이스 구축과 자연어 질의응답 검증",
       "PDF·Word·Excel 문서 업로드와 Supabase 저장 구조 설계",
     ],
-    visible: true,
+    visible: false,
   },
   {
     slug: "naemoeum",
