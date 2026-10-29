@@ -8,7 +8,7 @@ export const profile = {
   intro:
     "테일즈런너를 비롯한 게임·웹 플랫폼 서비스를 검수합니다. 반복되는 검수는 AI와 자동화 도구로 줄이고, 필요한 서비스는 직접 만들어 배포합니다.",
   links: [{ label: "GitHub", href: "https://github.com/yourjini" }],
-  updatedAt: "2026-10-04",
+  updatedAt: "2026-10-29",
 };
 
 // 이력. 위에서부터 최근 순서로 적어 주세요. period 는 자유 형식입니다.
@@ -26,7 +26,7 @@ export const experience: { period: string; title: string; detail: string }[] = [
   {
     period: "진행 중",
     title: "테일즈런너 웹서비스 QA",
-    detail: "2주 간격 정기점검 이벤트 검수, Stage/Live 비교 자동화(Diffy), 모니터링 대시보드(Watchtower) 운영.",
+    detail: "2주 간격 정기점검 이벤트 검수, 5단계 이벤트 검수 자동화(Diffy), 모니터링 대시보드(Watchtower) 운영.",
   },
 ];
 
